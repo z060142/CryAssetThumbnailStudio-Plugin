@@ -7,7 +7,9 @@
 
 namespace AssetThumbnailStudio
 {
+#if ASSET_THUMBNAIL_STUDIO_WITH_CRYAGENTSDK
 class CCryAgentThumbnailExtension;
+#endif
 class CThumbnailGenerationService;
 }
 
@@ -24,5 +26,7 @@ public:
 
 private:
 	std::unique_ptr<AssetThumbnailStudio::CThumbnailGenerationService> m_pGenerationService;
+#if ASSET_THUMBNAIL_STUDIO_WITH_CRYAGENTSDK
 	std::unique_ptr<AssetThumbnailStudio::CCryAgentThumbnailExtension> m_pCryAgentExtension;
+#endif
 };

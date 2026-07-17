@@ -20,9 +20,17 @@ This repo mirrors the CryEngine source tree layout — overlay it directly.
 3. Regenerate the solution the official way (`cry_cmake.exe`) and build the
    `AssetThumbnailStudio` target. Output: `bin/win_x64/EditorPlugins/`.
 
-> No CryAgentSDK in your tree? Delete `CryAgentThumbnailExtension.*`, their two
-> CMakeLists entries, and the extension usage in `Plugin.cpp` — the editor
-> functionality is unaffected.
+CryAgentSDK command integration is optional and disabled by default, so the
+plugin builds without CryAgentSDK. To enable `asset_thumbnail_studio.generate`,
+configure with:
+
+```cmake
+-DASSET_THUMBNAIL_STUDIO_WITH_CRYAGENTSDK=ON
+```
+
+The default `OFF` build excludes the extension sources, SDK include paths, and
+SDK library dependency. Asset Browser integration and thumbnail generation
+remain available.
 
 ## Usage
 

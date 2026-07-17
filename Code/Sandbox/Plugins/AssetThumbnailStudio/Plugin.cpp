@@ -1,6 +1,8 @@
 // Copyright 2026
 #include "StdAfx.h"
+#if ASSET_THUMBNAIL_STUDIO_WITH_CRYAGENTSDK
 #include "CryAgentThumbnailExtension.h"
+#endif
 #include "Plugin.h"
 #include "ThumbnailGenerationService.h"
 
@@ -76,9 +78,13 @@ void AddAssetBrowserContextMenu(CAbstractMenu& menu, const std::vector<CAsset*>&
 
 CAssetThumbnailStudioPlugin::CAssetThumbnailStudioPlugin()
 	: m_pGenerationService(new AssetThumbnailStudio::CThumbnailGenerationService())
+#if ASSET_THUMBNAIL_STUDIO_WITH_CRYAGENTSDK
 	, m_pCryAgentExtension(new AssetThumbnailStudio::CCryAgentThumbnailExtension(*m_pGenerationService))
+#endif
 {
+#if ASSET_THUMBNAIL_STUDIO_WITH_CRYAGENTSDK
 	m_pCryAgentExtension->Attach();
+#endif
 	GetIEditor()->RegisterNotifyListener(this);
 	CAssetBrowser::s_signalContextMenuRequested.Connect(
 		[this](CAbstractMenu& menu, const std::vector<CAsset*>& assets, const std::vector<string>&,
@@ -91,13 +97,17 @@ CAssetThumbnailStudioPlugin::CAssetThumbnailStudioPlugin()
 
 CAssetThumbnailStudioPlugin::~CAssetThumbnailStudioPlugin()
 {
+#if ASSET_THUMBNAIL_STUDIO_WITH_CRYAGENTSDK
 	if (m_pCryAgentExtension)
 	{
 		m_pCryAgentExtension->Detach();
 	}
+#endif
 	GetIEditor()->UnregisterNotifyListener(this);
 	CAssetBrowser::s_signalContextMenuRequested.DisconnectById(reinterpret_cast<uintptr_t>(this));
+#if ASSET_THUMBNAIL_STUDIO_WITH_CRYAGENTSDK
 	m_pCryAgentExtension.reset();
+#endif
 	m_pGenerationService.reset();
 }
 
@@ -110,10 +120,12 @@ void CAssetThumbnailStudioPlugin::OnEditorNotifyEvent(EEditorNotifyEvent event)
 
 	// Sandbox editor plugins are constructed before native project plugins on
 	// some startup paths. Retry silently from idle until CryAgentSDKHost exists.
+#if ASSET_THUMBNAIL_STUDIO_WITH_CRYAGENTSDK
 	if (event == eNotify_OnIdleUpdate && m_pCryAgentExtension && !m_pCryAgentExtension->IsAttached())
 	{
 		m_pCryAgentExtension->Attach();
 	}
+#endif
 }
 
 REGISTER_PLUGIN(CAssetThumbnailStudioPlugin);
