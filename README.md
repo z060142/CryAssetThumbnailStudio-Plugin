@@ -33,3 +33,32 @@ ground plate CGF, sky material, and probe cubemaps).
 In the Asset Browser, select one or more assets → right-click →
 **Regenerate Thumbnail (Studio)**. Thumbnails refresh automatically after
 generation.
+
+## Results
+
+The same Asset Browser selections before and after regeneration with the studio
+renderer. All examples below use assets from the CRYENGINE GameSDK.
+
+### Dead-tree assets
+
+| Before | After |
+| --- | --- |
+| ![Dead-tree assets before studio thumbnail generation](docs/images/showcase/dead-tree-assets-before.png) | ![Dead-tree assets after studio thumbnail generation](docs/images/showcase/dead-tree-assets-after.png) |
+
+### Distance-tree assets
+
+| Before | After |
+| --- | --- |
+| ![Distance-tree assets before studio thumbnail generation](docs/images/showcase/distance-tree-assets-before.png) | ![Distance-tree assets after studio thumbnail generation](docs/images/showcase/distance-tree-assets-after.png) |
+
+### Brick materials
+
+| Before | After |
+| --- | --- |
+| ![Brick materials before studio thumbnail generation](docs/images/showcase/brick-materials-before.png) | ![Brick materials after studio thumbnail generation](docs/images/showcase/brick-materials-after.png) |
+
+### Displacement materials
+
+| Before | After |
+| --- | --- |
+| ![Displacement materials before studio thumbnail generation](docs/images/showcase/displacement-materials-before.png) | ![Displacement materials after studio thumbnail generation](docs/images/showcase/displacement-materials-after.png) |
