@@ -1,0 +1,34 @@
+# Release artifacts
+/dist/
+
+# Local build trees
+/build/
+/out/
+/solutions_cmake*/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# Visual Studio transient files
+/.vs/
+*.suo
+*.user
+*.VC.db
+*.VC.opendb
+
+# Compiler and linker outputs
+*.obj
+*.pdb
+*.ilk
+*.exp
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Windows metadata
+Thumbs.db
+Desktop.ini
